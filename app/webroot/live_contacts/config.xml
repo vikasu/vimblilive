@@ -1,0 +1,8 @@
+<windowslivelogin>
+  <appid>000000004C0DA341</appid>
+  <secret>EDW3lw9c3BfqlzWpiEwBrAv9XRufWbUR</secret>
+  <securityalgorithm>wsignin1.0</securityalgorithm>
+
+  <returnurl>http://172.24.0.9:9953/app/webroot/live_contacts/index.php</returnurl>
+  <policyurl>http://172.24.0.9:9953/app/webroot/index.php</policyurl>
+</windowslivelogin>

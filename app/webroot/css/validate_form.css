@@ -1,0 +1,696 @@
+@charset "utf-8";
+.errormsg {
+	/*background:url("/img/msg_error.gif") no-repeat scroll 5px center #FFEBE8;*/
+	/*background-color: #F57D26;*/
+	/*border:1px solid #DD3C10;*/
+	color:red;
+	font-family:Arial;
+	font-size:11px;
+	font-weight:bold;
+	margin:2px 130px 5px;
+	overflow:hidden;
+	padding:5px 2px 5px 25px;
+	text-align:center;
+	text-decoration:none;
+	/*width:233px;*/
+}
+	.warning { color: red; }
+.successmsg  {
+	/*background:url("/img/msg_error.gif") no-repeat scroll 5px center #E8FCDF;*/
+	/*background-color: LightGreen;*/
+	/*border:1px solid #4CA009;*/
+	color:green;
+	font-family:Arial;
+	font-size:11px;
+	font-weight:bold;
+	margin:2px 130px 5px;
+	overflow:hidden;
+	padding:5px 2px 5px 25px;
+	text-align:center;
+	text-decoration:none;
+	/*width:320px;*/
+}
+.switch_on {
+display: block;
+}
+.switch_off {
+display: none;
+}
+#signup label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#signup label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#signup .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#editcategory label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#editcategory label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#editcategory .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#send_file label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#send_file label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#send_file .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#addcategory label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#addcategory label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#addcategory .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#myaccount label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#myaccount label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#myaccount .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#loginform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#loginform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#loginform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#addplan label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#addplan label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#addplan .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#staffsignup label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#staffsignup label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#staffsignup .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+#comment label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#comment label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#comment .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+#editstaff label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#editstaff label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#editstaff .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#myaccount label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#myaccount label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#myaccount .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+#adduser label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+
+#adduser label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+
+#adduser .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#uploadform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#uploadform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#uploadform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#forgotform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#forgotform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#forgotform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#changepwdform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#changepwdform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#changepwdform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#advancesearch label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+ /* margin-left: 200px;*/
+  /*margin-top: -16px;*/
+}
+
+#advancesearch label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+  /*margin-left: 200px;*/
+ /* margin-top: -16px;*/
+}
+#advancesearch .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#contactus label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#contactus label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#contactus .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#addform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#addform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#addform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+#updateform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#updateform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#updateform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+
+
+/************************  30/03/2012 *******************/
+
+/* Use for forgot password form */
+
+
+#forgotpass label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#forgotpass label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#forgotpass .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+/* Use for forgot password form */
+
+
+/* Use for Reset password form */
+
+#resetpass label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#resetpass label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#resetpass .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Reset password form */
+
+
+
+/* Use for Edit Page form */
+
+#editcms label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#editcms label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#editcms .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Edit Page form */
+
+
+
+
+/* Use for Help Category form */
+
+#addhelpcat label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#addhelpcat label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#addhelpcat .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Help Category form */
+
+
+
+/* Use for FAQ form */
+
+#addfaq label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#addfaq label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#addfaq .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for FAQ form */
+
+
+
+/* Use for contactus form */
+
+#contactus label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#contactus label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#contactus .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for contactus form */
+
+/* Use for Send message form */
+
+#sendmsg label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#sendmsg label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#sendmsg .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Send message form */
+
+
+/* Use for Reply message form */
+
+#replymsg label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#replymsg label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#replymsg .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for  Reply message form */
+
+
+/* Use for Change Password form */
+
+#changepassform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#changepassform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#changepassform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Change Password form */
+
+/* Use for Edit Activity form */
+
+#editactivity label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#editactivity label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#editactivity .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use for Edit Activity form */
+
+/* Use Signup form */
+
+#signupform label.error {
+  background:url("../img/admin/unchecked.gif") no-repeat 10px 0px;
+  padding-left: 25px;
+  padding-bottom: 5px; vertical-align:top;
+  font-size:9px;
+  font-weight: bold;
+  color: #EA5200;
+  border:none;
+  position :absolute;
+}
+#signupform label.checked {
+  background:url("../img/admin/checked.gif") no-repeat 10px 0px;
+}
+#signupform .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}
+
+/* Use Signup form */
+
+
+

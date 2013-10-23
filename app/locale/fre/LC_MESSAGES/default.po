@@ -1,0 +1,11 @@
+msgid "welcome"
+
+msgstr "de choix"
+
+msgid "Help us"
+
+msgstr "Aidez-nous"
+
+msgid "Enter message subject"
+
+msgstr "Entrez l'objet du message"

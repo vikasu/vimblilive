@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI Slider - Range with fixed maximum</title>
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<style>
+.ui-slider .ui-slider-handle { border:none; width:22px; height:22px; top:-3px;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{ background: url("green.png") repeat-x scroll 50% 50%; }
+.ui-widget-content { background: #F0AD14; }
+</style>
+<script>
+
+$('.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default').css('background','url("gray.png") repeat-x scroll 50% 50%');
+$(function() {
+$( "#slider-range-max" ).slider({
+range: "max",
+min: 0,
+max: 100,
+slide: function( event, ui ) {
+$( "#amount" ).val( ui.value );
+},
+
+change: function( event, ui ) {
+    if($( "#slider-range-max" ).slider( "value" ) >50)
+    {
+        $('.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default').css('background','url("red.png") repeat-x scroll 50% 50%');
+    } else {
+        $('.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default').css('background','url("green.png") repeat-x scroll 50% 50%');
+    }
+    
+    
+}
+
+});
+$( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+
+});
+</script>
+</head>
+<body>
+<p>
+<label for="amount">Minimum number of bedrooms:</label>
+<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+</p>
+<div id="slider-range-max" style="width:200px; margin:200px;"></div>
+</body>
+</html>

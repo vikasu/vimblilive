@@ -1,0 +1,36 @@
+msgid "welcome"
+
+msgstr "welcome"
+
+msgid "Help us"
+
+msgstr "Help us"
+
+msgid "Enter message subject"
+
+msgstr "Enter message subject"
+
+msgid "Enter message subject"
+
+msgstr "Enter message subject"
+
+msgid "<h4>Use the most of the tools<br /> you have better</h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"
+msgstr "<h4>Use the most of the tools<br /> you have better</h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"
+
+msgid "<h4> Congrats with the <br>new title!!</h4><span>You have worked hard for the <br />opportunity.  Make it count ?</span>"
+msgstr "<h4> Congrats with the <br>new title!!</h4><span>You have worked hard for the <br />opportunity.  Make it count ?</span>"
+
+msgid "<h4>Embrace the opportunity <br />and  use your support</h4><span>Define and pursue your goals in this <br> position.  Identify and rally your support. </span>"
+msgstr "<h4>Embrace the opportunity <br />and  use your support</h4><span>Define and pursue your goals in this <br> position.  Identify and rally your support. </span>"
+                                        
+msgid "<h4>Use the tools you have <br>better </h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"
+msgstr "<h4>Use the tools you have <br>better </h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"
+
+msgid "<h4>Learn &nbsp;from &nbsp; & &nbsp;share<br /> with &nbsp;others</h4><span>Share you moments of achievement.  Ask the <br>questions you have.  Answer questions<br> of others in a similar position</span>"
+msgstr "<h4>Learn &nbsp;from &nbsp; & &nbsp;share<br /> with &nbsp;others</h4><span>Share you moments of achievement.  Ask the <br>questions you have.  Answer questions<br> of others in a similar position</span>"
+
+msgid "<h4>Reach your goal ?</h4><span>Take action to turn your dreams,<br> energy & talents into reality ? !</span>"
+msgstr "<h4>Reach your goal ?</h4><span>Take action to turn your dreams,<br> energy & talents into reality ? !</span>"
+
+msgid "<h4>Use the most of the tools<br /> you have better</h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"
+msgstr "<h4>Use the most of the tools<br /> you have better</h4><span>Unlock the value of your calendar,<br /> address book and email.</span>"

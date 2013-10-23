@@ -1,0 +1,54 @@
+CREATE DATABASE  IF NOT EXISTS `db_vimbli_prod` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `db_vimbli_prod`;
+-- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (i686)
+--
+-- Host: vimblidb.cvxwtu7q95t7.us-east-1.rds.amazonaws.com    Database: db_vimbli_prod
+-- ------------------------------------------------------
+-- Server version	5.5.25a-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `user_groups_users`
+--
+
+DROP TABLE IF EXISTS `user_groups_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_groups_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=231 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_groups_users`
+--
+
+LOCK TABLES `user_groups_users` WRITE;
+/*!40000 ALTER TABLE `user_groups_users` DISABLE KEYS */;
+INSERT INTO `user_groups_users` VALUES (143,217,1),(158,233,1),(185,271,1),(51,109,1),(71,137,1),(226,320,1),(63,127,1),(190,276,1),(64,128,1),(177,260,1),(103,172,1),(139,213,1),(138,212,1),(148,222,1),(96,164,1),(100,169,1),(101,170,1),(147,221,1),(109,178,1),(136,207,1),(181,267,1),(137,208,1),(144,218,1),(160,235,1),(178,261,1),(183,269,1),(176,259,1),(192,278,1),(156,231,1),(169,245,1),(186,272,1),(187,273,1),(193,279,1),(227,321,1),(195,281,1),(228,322,1),(217,303,1),(200,286,1),(201,287,1),(202,288,1),(203,289,1),(204,290,1),(205,291,1),(206,292,1),(209,295,1),(210,296,1),(211,297,1),(212,298,1),(213,299,1),(214,300,1),(218,304,1),(219,305,1),(220,306,1),(229,323,1),(223,314,1),(224,317,1),(225,318,1),(230,324,1);
+/*!40000 ALTER TABLE `user_groups_users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-10-23 11:24:20

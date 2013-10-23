@@ -1,0 +1,175 @@
+/**
+ * Rating plugin v2.5
+ *
+ * This plugin offers you an easy and customizable way to 
+ * create user-defined ratings for any CakePHP model 
+ * over a CakePHP element.
+ * 
+ * The rating images in webroot\img are from 
+ * Yusuke Kamiyamane (http://www.pinvoke.com/)
+ *
+ * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @copyright Copyright 2009, Michael Schneidt
+ * @license http://www.opensource.org/licenses/mit-license.php
+ * @link http://bakery.cakephp.org/articles/view/ajax-star-rating-plugin-1
+ * @version 2.5
+ */
+
+--------------
+-- Features --
+--------------
+# Easy rating possibility for any model
+# No preparation of models and controllers
+# Multiple different ratings for one model
+# User and guest rating
+# Many settings to meet your needs
+# Ajax Prototype and jQuery support
+# Fallback for disabled javascript
+# Cross browser compatibility
+# Integrated demo
+
+------------------
+-- Requirements --
+------------------
+# CakePHP 1.3
+# Prototype or jQuery framework for Ajax support
+# User id stored in session for user rating
+
+-------------------
+-- Demonstration --
+-------------------
+The integrated demo can be found at:
+/rating/demo
+
+------------
+-- Update --
+------------
+Follow these steps, if you update from a previous version. 
+
+Extract the plugin, including the subfolder 'rating', to your app plugins folder 'app/plugins' and proceed with the according update instructions. 
+
+# v1.9 -> v2.0
+1) Update the database ratings table
+ALTER TABLE `ratings` CHANGE `created` `created` DATETIME NULL DEFAULT NULL, CHANGE `modified` `modified` DATETIME NULL DEFAULT NULL, CHANGE `user_id` `user_id` char(36) NOT NULL DEFAULT '';
+ALTER TABLE ratings ADD KEY `rating` (`model_id`,`model`,`rating`,`name`);
+
+2) Clear the model cache (\app\tmp\cache\models)
+
+3) Add the new settings to the plugin config files in 'app/config'
+$config['Rating.guest'] = false;
+$config['Rating.guestDuration'] = '1 week';
+$config['Rating.saveToModel'] = false;
+$config['Rating.modelVotesField'] = 'votes';
+
+# v2.0 -> v2.1
+1) Add the new settings to the plugin config files in 'app/config'
+$config['Rating.flash'] = false;
+$config['Rating.flashMessage'] = __('Your rating has been saved.', true);
+$config['Rating.fallback'] = true;
+$config['Rating.fallbackFlash'] = false;
+
+# v2.3 -> v2.4
+1) Change your rating config files in 'app/config' from point notation to underscore notation 
+e.g. plugin_rating.php to plugin_rating.php.
+2) It's recommended to also to that on the rating element's config parameter in your views, 
+although the point notation is still supported.
+
+------------------
+-- Installation --
+------------------
+1) Make sure you meet the requirements above.
+
+2) Extract the plugin, including the subfolder 'rating', to your app plugins folder 'app/plugins'.
+
+3) It's recommended to copy the 'rating/config/plugin_rating.php' to your app configs folder 'app/config'.
+
+4) Change the settings to your desire, but let 'Rating.showHelp' set to true until everything works.
+
+5) Apply the 'install.sql' to your database to create the 'ratings' table.
+
+6) Load the plugin javascript and css files into your layout. Replace [js_framework] with 'prototype_min' or 'jquery_min' depending on the framework you use.
+<?php echo $javascript->link('/rating/js/[js_framework]'); ?>
+<?php echo $html->css('/rating/css/rating'); ?>  
+
+7) For full model integration in your app, you can apply the following relations to the models.
+To access the ratings through your model (replace [name_of_model]):
+var $hasMany = array('Rating' => array(
+    'className' => 'Rating',
+    'foreignKey' => 'model_id',
+    'conditions' => array('Rating.model' => [name_of_model]),
+    'dependent' => true,
+    'exclusive' => true
+  )
+);
+
+To access the user model through the rating model add the following relation to 'rating\models\rating.php' (replace [name_of_user_model]).
+var $belongsTo = array([name_of_user_model] => array(
+    'className'  => [name_of_user_model]
+  )
+);
+
+8) If you set 'Rating.saveToModel' to true, then add the defined 'Rating.modelAverageField' and 'Rating.modelVotesField' to all models you want to use. To do that you can use the following SQL statements (replace [name_of_table], [Rating.modelAverageField], [Rating.modelVotesField]). 
+ALTER TABLE [name_of_table] ADD (`[Rating.modelAverageField]` decimal(3,1) unsigned default '0.0');
+ALTER TABLE [name_of_table] ADD (`[Rating.modelVotesField]` int(11) unsigned default '0');
+
+If the plugin shows the field is still missing, try to clear the model cache of your app in 'app/tmp/cache/models'.
+
+9) You can change the styles of the rating element in the css file 'rating/vendors/css/rating.css'.
+
+----------------
+-- How to use --
+----------------
+Now you can place the rating element in your views as follows. (replace [name_of_model] and [id_of_model])  
+
+// Default rating element for one model id
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model]));
+
+// Multiple ratings for one model id
+//
+// If you want to have more ratings for one model id, like sound and picture of 
+// a movie, you can use the additional 'name' parameter.
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model],
+                                    'name' => 'sound'));
+
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model],
+                                    'name' => 'picture'));
+
+// Individual configuration of a rating element
+//
+// Sometimes you want to use more than one style of rating elements in your app. 
+// That can be reached with the 'config' parameter and different config files in 
+// 'app/config'. Just clone the original 'plugin_rating.php' and give it a different 
+// name like plugin_rating_style1.php, which you then pass to the element. There is
+// also the possibility to overload the config file settings on the element.
+
+// uses 'plugin_rating.php' in 'voting/config' or 'app/config' as default
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model]));
+
+// uses 'plugin_rating_style1.php' in 'app/config'
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model],
+                                    'config' => 'plugin_rating_style1'));
+
+// overload default settings
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model],
+                                    'config' => array('Rating.[SETTING_1]' => true,
+                                                      'Rating.[SETTING_2]' => false)));
+                                    
+// overload individual settings
+echo $this->element('rating', array('plugin' => 'rating',
+                                    'model' => [name_of_model],
+                                    'id' => [id_of_model],
+                                    'config' => array('plugin_rating_style1', array(
+                                        'Rating.[SETTING_1]' => true,
+                                        'Rating.[SETTING_2]' => false));

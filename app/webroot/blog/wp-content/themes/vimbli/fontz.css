@@ -1,0 +1,62 @@
+@charset "utf-8";
+/*********************************************
+=======CSS Document Only For Font Face======== 
+================Generated For================= 
+=================Custom Fonts===============*/
+
+@font-face {
+ font-family:'Bebas';
+ src: url('fontz/bebas/bebas.eot');
+ src: url('fontz/bebas/bebas.eot?#iefix') format('embedded-opentype'),  
+      url('fontz/bebas/bebas.woff') format('woff'),  
+	  url('fontz/bebas/bebas.ttf') format('truetype'),  
+	  url('fontz/bebas/bebas.svg#bebas') format('svg');
+ font-weight:normal;
+ font-style:normal;
+}
+.bebas { font-family:'Bebas'; font-weight:normal; }
+
+/*********************/
+
+@font-face {
+ font-family:'ProximaNova-Regular';
+ src: url('fontz/proximanovaRegular/proximanovaRegular.eot');
+ src: url('fontz/proximanovaRegular/proximanovaRegular.eot?#iefix') format('embedded-opentype'), 
+      url('fontz/proximanovaRegular/proximanovaRegular.woff') format('woff'), 
+	  url('fontz/proximanovaRegular/proximanovaRegular.ttf') format('truetype'), 
+	  url('fontz/proximanovaRegular/proximanovaRegular.svg#proximanovaRegular') format('svg');
+ font-weight:normal;
+ font-style:normal;
+}
+.proxinava-rglr { font-family:'ProximaNova-Regular'; font-weight: normal; }
+
+/*********************/
+
+
+@font-face {
+ font-family:'ProximaNova-Light';
+ src: url('fontz/proximanovaLight/proximanovaLight.eot');
+ src: url('fontz/proximanovaLight/proximanovaLight.eot?#iefix') format('embedded-opentype'),  
+      url('fontz/proximanovaLight/proximanovaLight.woff') format('woff'),  
+	  url('fontz/proximanovaLight/proximanovaLight.ttf') format('truetype'),  
+	  url('fontz/proximanovaLight/proximanovaLight.svg#proximanovaLight') format('svg');
+ font-weight:normal;
+ font-style:normal;
+}
+.proxinava-light { font-family:'ProximaNova-Light'; font-weight:normal; }
+
+/*********************/
+
+@font-face {
+ font-family:'ProximaNova-Semibold';
+ src: url('fontz/proximanovaSemiBold/proximanovaSemibold.eot');
+ src: url('fontz/proximanovaSemiBold/proximanovaSemibold.eot?#iefix') format('embedded-opentype'),  
+      url('fontz/proximanovaSemiBold/proximanovaSemibold.woff') format('woff'),  
+	  url('fontz/proximanovaSemiBold/proximanovaSemibold.ttf') format('truetype'),  
+	  url('fontz/proximanovaSemiBold/proximanovaSemibold.svg#proximanovaSemibold') format('svg');
+ font-weight:normal;
+ font-style:normal;
+}
+.proxinava-semibold { font-family:'ProximaNova-Semibold'; font-weight:normal; }
+
+/*********************/

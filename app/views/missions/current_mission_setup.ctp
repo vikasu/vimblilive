@@ -1,0 +1,526 @@
+<?php //echo '<pre>'; print_r($_SESSION); die;
+
+if($this->data["Mission"]["shared_with"] == 'individual'){
+     foreach($this->data['MissionUser'] as $shared_with_user){
+	  $shared_user_arr[] = $shared_with_user['shared_with_id'];
+     }
+}
+
+//pr($user_arr); die;
+?>
+<link rel="stylesheet" href="<?php echo SITE_URL ?>fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo SITE_URL ?>fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script>
+jQuery(document).ready(function(){
+     
+     jQuery("form:first *:input[type != hidden]:first").focus();
+     
+     jQuery(".msgTo").click(function(){
+		jQuery(".listing").hide();
+		var classToShow = "."+jQuery(this).attr('id');
+		jQuery(classToShow).show();
+	});
+     
+     if('<?php echo $this->data["Mission"]["shared_with"] ?>' == 'individual'){
+	  jQuery(".individual").show();
+     }else if('<?php echo $this->data["Mission"]["shared_with"] ?>' == 'cohort'){
+	  jQuery(".cohort").show();
+     }
+    
+     jQuery(".conChk").live('click',function(){ 
+			if(jQuery(this).is(":checked")){
+				//jQuery(this).parent().parent().children().children("input:radio").attr("checked", false);
+			}else{
+				jQuery(this).parent().parent().children().children("input:radio").attr("checked", false);	
+			}
+		});
+     jQuery("#MissionStartTime").change(function(){
+          jQuery(".k2sStart").val($(this).val())
+          }); 
+     jQuery("#MissionEndTime").change(function(){
+          jQuery(".k2sEnd").val($(this).val())
+          });
+     
+});
+</script>
+<style>
+.customform .select {
+    float: left;
+    position: relative;
+    width: 100px;
+    margin-top:4px;
+}
+.msrdtxt input { width:216px; }
+.expttxt input { width:112px !important; }
+.nmbrtxt input { width:28px !important;}
+.datetxt input { width:141px !important; }
+.milstone select { font-size:12px !important; margin: 17px 0 0 !important; }
+
+.keydes { width: 170px !important; }
+.keydates { width: 90px !important; }
+.keyhrs { width: 110px !important; }
+.keyranking { width: 145px !important; }
+.conrow { padding:5px;}
+.textbox span select {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #787878;
+    font-family: calibri;
+    font-size: 19px;
+    margin: 12px 0 0;
+}
+.keyperiods{ width: 108px !important;}
+.keyperiods_new{ width: 70px !important;}
+#popUp{padding: 10px;width: 345px;text-align: center;margin: 10px 55px 0px 60px; white-space: 5px;}
+#invite{padding-left: 10px;}
+</style>
+<!--Center Align Inner Content Section Starts-->
+<section class="content-pane about-pane">
+     <!--Flexible WhiteBox With Shadows Starts-->
+     <section class=whitebox>
+         <section class=whiteboxtop>
+             <section class=whiteboxtop-right></section>
+         </section>
+         <section class=whiteboxmid>
+             <section class=whiteboxmid-right>
+                  <!--All Your Content Goes Here-->
+                  <section class=aboutpane-inner>
+                       <!--Heading Goes Here-->
+                       <a href='#'><h3 class="hwdtwrks dshbrd timeline_small_icon"> <?php
+                           if($_SESSION['Auth']['User']['user_type'] == 2){
+                              echo "My Group Setup & Data";
+                           }else{
+                                   echo "My Setup & Data";
+                              }?></h3></a>
+                       <!--Right Panel Starts-->
+                           <section class="dshbrd-right dshbrd-right-new">
+                               <!--Current Reflection Section Starts-->
+			       
+                               <section class="current-mission manggrpdsbrd">
+                                    <?php echo $this->element("message/errors");?>
+                                <?php echo $this->Session->flash(); echo $this->Session->flash('auth');?>
+                              
+                                    <?php echo $this->Form->create('Mission', array('url'=>array('controller' => 'missions','action' => 'current_mission_setup',base64_encode($this->data['Mission']['id'])),'id'=>'addMissionForm', 'name'=>'addMissionForm','enctype'=>'multipart/form-data')); ?>
+                                    
+                                    <!--Heading-->
+                                    <h3 class=wrdspcn>
+				    <?php if(isset($this->params['pass'][0]) AND ($this->params['pass'][0] != "")){ ?>
+				    Edit<span>Mission
+				    <?php }else{?>
+				    Add<span>Mission
+				    <?php } ?>
+				    </span></h3>
+                                    <!--Mission Fields Starts-->
+                                    <ul class="missin-flds missin-flds-new">
+                                        <li class="title_date">
+					     <?php //$mission_id = $recentMission['Mission']['id']?>
+                                            <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.title', array('type' => 'text','placeholder' => 'Title','maxlength'=>50, "label" => false)); ?></span></div>
+                                            <?php echo $form->input('Mission.id', array('type' => 'hidden', "label" => false)); ?>
+					    <div class="textbox datetxt"><span><?php echo $form->input('Mission.start_time', array('value'=>($recentMission['Mission']['start_time'] != "")?date('d/m/Y',strtotime($recentMission['Mission']['start_time'])):date('d/m/Y'),'type' => 'text','placeholder' => 'Start','class' =>'calInput mainStart', "label" => false,'style'=>'width:106px !important')); ?></span><a href="#"><img class="slctdate" title="Select Date" alt="" src="<?php echo SITE_URL ?>img/cal_icon.png"></a></div>
+                                            <div class="textbox datetxt"><span><?php echo $form->input('Mission.end_time', array('value'=>($recentMission['Mission']['start_time'] != "")?date('d/m/Y',strtotime($recentMission['Mission']['end_time'])):date('d/m/Y'),'type' => 'text','placeholder' => 'End','class' =>'calInput mainEnd', "label" => false,'style'=>'width:106px !important')); ?></span><a href="#"><img class="slctdate" title="Select Date" alt="" src="<?php echo SITE_URL ?>img/cal_icon.png"></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.description', array('type' => 'text','placeholder' => 'Description', "label" => false)); ?></span></div>
+                                        </li>
+                                        <li>
+                                            <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.definition_of_success', array('type' => 'text','placeholder' => 'Definition of success', "label" => false)); ?></span></div>
+                                        </li>
+                                        <!--<li class="scf-list">
+					     
+                                        </li>-->
+                                        <?php /* Share Mission functionality- Starts */ 
+                                        if($_SESSION['Auth']['User']['user_type'] == 2) { ?>
+					      <li><h3 class=wrdspcn>Share<span>With</span></h3></li>
+					<li>
+					     <input type="radio" id="individual" class="msgTo" name="data[Message][msg_to]" value="individual" style="margin-left:5px;" <?php if($this->data['Mission']['shared_with']=='individual'){?> checked="checked" <?php } ?>>Individual User
+                                             <input type="radio" id="cohort" class="msgTo" name="data[Message][msg_to]" value="cohort" style="margin-left:10px;" <?php if($this->data['Mission']['shared_with']=='cohort'){?> checked="checked" <?php } ?>>Cohorts
+                                             <input type="radio" id="group" class="msgTo" name="data[Message][msg_to]" value="group" style="margin-left:10px;"<?php if($this->data['Mission']['shared_with']=='group'){?> checked="checked" <?php } ?>>Group
+					</li>
+				      
+					<li class="individual listing" style="margin-top:10px; display:none;"><div style="border:1px solid #ccc; overflow-y:scroll; height:120px; width: 450px; margin: 0 0 15px 5px; border-radius:4px;">
+						<span style="float:left; width:95%; padding:5px; background:#eee; text-align:center;">Select Users</span>
+						  <?php
+						  if(!empty($cohortList)){
+						       foreach($allUsers as $key=>$val): ?>
+						           <span style="float:left; width:95%; padding:5px;"><input type="checkbox" name="data[User][user_id][]" value="<?php echo $key; ?>" style="margin:0 3px 0 0;" <?php if(in_array($key,$shared_user_arr)) {?> checked="checked"<?php } ?>><?php echo $val; ?></span>
+						       <?php
+						       endforeach;
+						  } else {
+						       echo '--------------- No user available ---------------';
+						  }?>
+						  </div>
+						  
+					</li>
+					
+				      
+					<li class="cohort listing" style="margin-top:10px; display:none;"><div style="border:1px solid #ccc; overflow-y:scroll; height:120px; width: 450px; margin: 0 0 15px 5px; border-radius:4px;">
+						<span style="float:left; width:95%; padding:5px; background:#eee; text-align:center;">Select Cohorts</span>
+						  <?php
+						  if(!empty($cohortList)){
+						       foreach($cohortList as $key=>$val): ?>
+							    <span style="float:left; width:95%; padding:5px;"><input type="checkbox" name="data[Cohort][cohort_id][]" value="<?php echo $key; ?>" style="margin:0 3px 0 0;" <?php if(in_array($key,$shared_cohort_arr)) {?> checked="checked"<?php } ?>><?php echo $val; ?></span>
+						       <?php
+						       endforeach;
+						  } else {
+						       echo '--------------- No Cohorts available ---------------';
+						  }?>
+						  </div>
+						  
+					</li>
+				   <!------------------edited by anita--------------------------->
+					 <li class="connection listing" style="margin-top:10px; display:block;">
+						  </div><li><h3 class=wrdspcn>Connection<span>notes</span></h3></li>
+				    <li>
+                                        <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.connection_notes', array('type' => 'text','placeholder' => 'Specify connection notes here', "label" => false)); ?></span></div>
+                                   </li>
+			      <!--------------------------------->
+                                        <?php } /* Share Mission functionality- Ends */
+                                        else if($_SESSION['Auth']['User']['user_type'] == 1) {?>
+                                             <li class="connection listing" style="margin-top:10px; display:block;">
+						  </div><li><h3 class=wrdspcn>Connection<span>Notes</span></h3></li>
+				    <li>
+                                        <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.connection_notes', array('type' => 'text','placeholder' => 'Specify connection notes here', "label" => false)); ?></span></div>
+                                   </li>
+				
+                                        
+                                        <li><h3 class=wrdspcn>Enter<span>Connections</span></h3></li>
+				   
+                                   <?php 
+					     $no_of_con = sizeof($recentMission['MissionConnection']);
+					     for($i=0; $i < $no_of_con; $i++) {
+						  $con_name = isset($recentMission['MissionConnection'][$i]['Connection']['name']) ? $recentMission['MissionConnection'][$i]['Connection']['name'] : 'N/A';
+						  $hours[0] = isset($recentMission['MissionConnection'][$i]['hours']) ? $recentMission['MissionConnection'][$i]['hours'] : '0';
+						  $period[0] = isset($recentMission['MissionConnection'][$i]['frequency']) ? $recentMission['MissionConnection'][$i]['frequency'] : '';
+                                            ?>
+                                             <li>
+                                                  <div class="textbox ttletxt"><span><?php echo $form->input('MissionConnection.connection_title][', array('value'=>$con_name,'type' => 'text','placeholder' => 'Start writing connection name', 'class'=>'autoSuggestInput', "label" => false)); ?></span></div>
+                                                  <div class="textbox" style="float:left"><span><?php  echo $form->input('MissionConnection.hours][', array('selected'=>$hours,'type'=>'select','options'=>array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7),'empty'=>array('0'=>'None'),'value'=>'', "label" => false, 'class'=>'keyperiods')); ?></span></div>
+                                                  <div class="textbox" style="float:left"><span><?php  echo $form->input('MissionConnection.period][', array('selected'=>$period,'type'=>'select','options'=>array('Weekly'=>'Weekly','Monthly'=>'Monthly','Mission'=>'Mission'),'value'=>'', "label" => false, 'class'=>'keyperiods')); ?></span></div>
+                                            <a align ='right' style='float:right; margin-top:-30px; margin-left:320px; text-align:right; color:#D83F4A;' href='javascript:void(0);'><img class="removeRec" src='<?php echo SITE_URL ?>img/remove.png'/></a>
+                                             </li>
+                                             
+                                   <?php } ?>
+                                   
+                                   <li id="conClone" style="" class="enter_select">
+                                   <?php  $sharedConnections = isset($connectionNames) && !empty($connectionNames) ? implode(', ',$connectionNames) : '';
+				          $missionConnHours = isset($sharedWithConnectionTime) && !empty($sharedWithConnectionTime) ? $sharedWithConnectionTime['MissionConnection']['hours'] : '';
+					  //pr($sharedWithConnectionTime);
+					  @$missionConnPeriod[] = isset($sharedWithConnectionTime) && !empty($sharedWithConnectionTime) ? $sharedWithConnectionTime['MissionConnection']['period'] : ''; ?>
+				    <!--<li id="clone_mission_connection">-->
+					<div class="textbox ttletxt"><span><?php echo $form->input('MissionConnection.connection_title][', array('value'=>'','type' => 'text','placeholder' => 'Start writing connection name', 'class'=>'autoSuggestInput', "label" => false)); ?></span></div>
+                                        <?php echo $form->hidden('MissionConnection.connection_ids', array('type' => 'text','placeholder' => 'Start writing connection name', "label" => false)); ?>
+                                        <div class="textbox" style="float:left"><span><?php  echo $form->input('MissionConnection.hours][', array('value'=>$missionConnHours,'type'=>'select','options'=>array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7),'empty'=>array('0'=>'None'),'value'=>'', "label" => false, 'class'=>'keyperiods small_select')); ?></span></div>
+					<div class="textbox" style="float:left"><span><?php  echo $form->input('MissionConnection.period][', array('selected'=>$missionConnPeriod,'type'=>'select','options'=>array('Weekly'=>'Weekly','Monthly'=>'Monthly','Mission'=>'Mission'),'value'=>'', "label" => false, 'class'=>'keyperiods')); ?></span></div>
+				    <!--</li>-->
+                                    
+                                   </li>
+                                    
+                                    <li><div id="add_con" class="blubtn-big blubtn_new" style="float: right;"><input type="button" value="Add More" /></div></li>
+				         
+                                             
+                                             
+                                        <?php } ?>
+				       </ul>
+				    <!--<li><div id="add_mission_connection" class="blubtn-mid"><input type="button" value="Add More" /></div></li>-->
+				    
+                                    
+                                    <!--Key To Success Starts-->
+                                    <section class="milstone">
+                                         <!--Heading Starts-->
+                                         <h3 class=wrdspcn>Keys<span>to Success</span></h3>
+                                         <!--Listing Goes Here-->
+                                         <ul class="missin-flds">
+                                             <?php 
+					     $no_of_k2s = sizeof($recentMission['KeyToSuccess']);
+					     for($i=0; $i < $no_of_k2s; $i++) {
+						  $k2s_description = isset($recentMission['KeyToSuccess'][$i]['description']) ? $recentMission['KeyToSuccess'][$i]['description'] : '';
+						  $k2s_expected_hrs = isset($recentMission['KeyToSuccess'][$i]['expected_hrs']) ? $recentMission['KeyToSuccess'][$i]['expected_hrs'] : '';
+						  $k2s_period_sel[0] = isset($recentMission['KeyToSuccess'][$i]['period']) ? $recentMission['KeyToSuccess'][$i]['period'] : '';
+						  $k2s_ranking = isset($recentMission['KeyToSuccess'][$i]['ranking']) ? $recentMission['KeyToSuccess'][$i]['ranking'] : '';
+                                                  $k2s_start = isset($recentMission['KeyToSuccess'][$i]['start_date']) ? date('d/m/Y',strtotime($recentMission['KeyToSuccess'][$i]['start_date'])) : '';
+                                                  $k2s_end = isset($recentMission['KeyToSuccess'][$i]['start_date']) ? date('d/m/Y',strtotime($recentMission['KeyToSuccess'][$i]['end_date'])) : '';
+                                            ?>
+                                             <li>
+                                                  <div class="textbox msrdtxt key_dscrptn"><span><?php echo $form->input('KeyToSuccess.description][', array('value'=>$k2s_description,'type' => 'text','placeholder' => 'Description', "label" => false, 'class'=>'keydes')); ?></span></div>
+						  <div class="textbox datetxt"><span><?php echo $form->input('KeyToSuccess.expected_hrs][', array('value'=>$k2s_expected_hrs,'type' => 'text','placeholder' => 'Hrs','style'=>'width:30px !important;', "label" => false, 'class'=>'keyhrs')); ?></span></div>
+                                                  <div class="textbox" style="float:left"><span><?php  echo $form->input('KeyToSuccess.period][', array('selected'=>$k2s_period_sel,'type'=>'select','options'=>array('0'=>'Weekly','1'=>'Monthly','2'=>'Mission'),'value'=>'', "label" => false, 'class'=>'keyperiods keyperiods_new')); ?></span></div>
+                                                  <div class="textbox msrdtxt"><span><?php echo $form->input('KeyToSuccess.start_date][', array('value'=>$k2s_start,'type' => 'text','id'=>'startDate'.$i,'placeholder' => 'Start',"label" => false, 'class'=>'calInput keydates k2sStart')); ?></span></div>
+                                                  <div class="textbox msrdtxt"><span><?php echo $form->input('KeyToSuccess.end_date][', array('value'=>$k2s_end,'type' => 'text','id'=>'endDate'.$i,'placeholder' => 'End',"label" => false, 'class'=>'calInput keydates k2sEnd')); ?></span></div>
+                                                  <div class="textbox expttxt"><span><?php echo $form->input('KeyToSuccess.ranking][', array('value'=>$k2s_ranking,'type' => 'text','placeholder' => 'Max 5 Keywords, separated by ","', "label" => false, 'class'=>'keyranking','style'=>'width:300px !important;')); ?></span></div>
+						  <!--<div class="blubtn-small signoff" style="opacity:0.4"><input type="button" value="Sign Off" /></div>-->
+                                            <a align ='right' style='float:right; margin-top:-30px; margin-left:320px; text-align:right; color:#D83F4A;' href='javascript:void(0);'><img class="removeRec" src='<?php echo SITE_URL ?>img/remove.png'/></a>
+                                             </li>
+                                             <?php } ?>
+                                             <div id="keyClone" style="float:left;">
+                                             <table><tr><td>
+                                             <li>
+                                                 <div class="textbox msrdtxt key_dscrptn"><span><?php echo $form->input('KeyToSuccess.description][', array('type' => 'text','placeholder' => 'Description',"label" => false, 'class'=>'keydes')); ?></span></div>
+                                                 <div class="textbox datetxt"><span><?php echo $form->input('KeyToSuccess.expected_hrs][', array('type' => 'text','placeholder' => 'Hrs','style'=>'width:30px !important;', "label" => false, 'class'=>'keyhrs')); ?></span></div>
+                                                 <div class="textbox" style="float:left"><span><?php  echo $form->input('KeyToSuccess.period][', array('type'=>'select','options'=>array('0'=>'Weekly','1'=>'Monthly','2'=>'Mission'),'value'=>'', "label" => false, 'class'=>'keyperiods keyperiods_new')); ?></span></div>
+                                                 <div class="textbox msrdtxt"><span><?php echo $form->input('KeyToSuccess.start_date][', array('type' => 'text','placeholder' => 'Start',"label" => false,'class'=>'calInput keydates k2sStart')); ?></span></div>
+                                                 <div class="textbox msrdtxt"><span><?php echo $form->input('KeyToSuccess.end_date][', array('type' => 'text','placeholder' => 'End',"label" => false, 'class'=>'calInput keydates k2sEnd')); ?></span></div>
+                                                 <div class="textbox expttxt"><span><?php echo $form->input('KeyToSuccess.ranking][', array('type' => 'text','placeholder' => 'Max 5 Keywords, separated by ","', "label" => false, 'class'=>'keyranking','style'=>'width:300px !important;')); ?></span></div>
+                                               <!--  <div class="blubtn-small signoff" style="opacity:0.4"><input type="button" value="Sign Off" /></div>-->
+                                             </li>
+                                             </td></tr></table>
+                                             </div>
+                                             
+                                             <li><div id="add_key" class="blubtn-big blubtn_new" style="float: right"><input type="button" value="Add More" /></div></li>
+                                              <li><h3 class=wrdspcn>Mission<span>Notes</span></h3></li>
+					      <li>
+						  <div class="textbox dscrtxt"><span><?php echo $form->input('Mission.mission_notes', array('type' => 'text','placeholder' => 'Specify mission notes here', "label" => false,'class'=>'notes_inpt')); ?></span></div>
+					     </li>
+					     <div id="invite_sponsor_element">
+						  <?php unset($_SESSION['sp_msz']);?>
+						  <?php echo $this->Element('/dashboard/invite_sponsor');?>
+					     </div>
+					     
+					     <li><section class=svcnntn style="padding-left:0px;"><div class="blubtn-big blubtn_new current_setup_btn"><?php echo $this->Form->submit('Save',array('class'=>'submit','div'=>false,'label'=>false)); ?></div></section></li>
+                                         </ul>
+                                    </section>
+                                    <!--Key To Success End-->
+                                    
+					<?php echo $this->Form->end(); ?>
+                                  
+                               </section>
+                               <!--Current Reflection Section End-->
+                           </section>
+                           <!--Right Panel End-->
+                       <!--Clear Div-->
+                       <section class=clr-b></section>
+                  </section>
+             </section>
+         </section>
+         <section class=whiteboxbot>
+             <section class=whiteboxbot-right></section>
+         </section>
+     </section>
+     <!--Flexible WhiteBox With Shadows End-->
+</section>
+<!--Center Align Inner Content Section End-->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<?php echo $this->Html->script('jquery.ui.autocomplete.js'); ?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+     
+     //Remove cloned results in edit
+     jQuery(".removeRec").click(function(){
+          jQuery(this).parent().parent().remove();
+     });
+     
+     function autoComp(){
+          //Auto-Complete- Starts
+          $(function() {
+               //var availableTags =  [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ];
+               var availableTags =  [<?php echo $autoCompleteConList; ?>];
+               //alert(availableTags);
+               function split( val ) {
+                    return val.split( /,\s*/ );
+               }
+               function extractLast( term ) {
+                    return split( term ).pop();
+               }
+               $( ".autoSuggestInput" )
+                    // don't navigate away from the field on tab when selecting an item
+                    .bind( "keydown", function( event ) {
+                    if ( event.keyCode === $.ui.keyCode.TAB && $( this ).data( "autocomplete" ).menu.active ) {
+                         event.preventDefault();
+                    }
+                    })
+                    .autocomplete({
+                         minLength: 0,
+                         source: function( request, response ) {
+                              // delegate back to autocomplete, but extract the last term
+                              //response( $.ui.autocomplete.filter(
+                              //availableTags, extractLast( request.term ) ) );
+                              var results = $.ui.autocomplete.filter(availableTags, extractLast( request.term ));
+                              response(results.slice(0, 20));
+        
+                         },
+                         focus: function() {
+                              // prevent value inserted on focus
+                              return false;
+                         },
+                         select: function( event, ui ) {
+                              var terms = split( this.value );
+                              // remove the current input
+                              terms.pop();
+                              // add the selected item
+                              terms.push( ui.item.value );
+                              //$("#MissionConnectionConnectionIds").val(ui.item.value); 
+                              // add placeholder to get the comma-and-space at the end
+                              terms.push( "" );
+                              this.value = terms.join( "" );
+                              return false;
+                         }
+                    });
+          });
+          //Auto-Complete- Ends
+     }
+     
+     //Run autocomplete for first time
+     autoComp(); //function called for autocomplete
+     
+     //Script for clone connections input
+     jQuery("#add_con").click(function(){
+          var clone = jQuery(this).parent().prev().clone();
+	  
+	  //alert(jQuery(this).parent().prev().html()); 
+          //return false;
+	  //jQuery(clone).add(jQuery("#conClone"));
+	  jQuery('.enter_select').last().after(clone);
+	  
+          
+          var img = jQuery("<a align ='right' style='float:right; margin-top:-30px; margin-left:320px; text-align:right; color:#D83F4A;' href='javascript:void(0);'><img src='<?php echo SITE_URL ?>img/remove.png'/></a>");
+          
+          //jQuery("#conClone").last().append(img);
+	  jQuery(clone).append(img);
+          jQuery(img).click(function(){
+                  jQuery(img).parent('li').remove();
+          });
+          
+          clone.find('input[type=text]').val('');
+          autoComp(); //function called for autocomplete, it will be binded with new elements
+          
+     });
+     //End script for clone connections input
+     
+     jQuery(function() {
+             jQuery( ".calInput" ).datepicker({dateFormat: 'dd/mm/yy'});
+             
+     });
+
+     jQuery("#addMissionForm").validationEngine();
+	
+     
+     //Script for clone milestone section
+     jQuery("#add_milestone").click(function(){
+          var clone = jQuery("#milestoneClone table tr td li").last().clone(); //alert(clone.toSource()); 
+          jQuery(clone).appendTo(jQuery("#milestoneClone table tr td"));
+          
+          var img = jQuery("<a align ='right' style='float:right; margin-top:-30px; margin-left:320px; text-align:right; color:#D83F4A;' href='javascript:void(0);'><img src='<?php echo SITE_URL ?>img/remove.png'/></a>");
+          
+          jQuery("#milestoneClone table tr td li").last().append(img);
+          jQuery(img).click(function(){
+                  
+                  jQuery(img).parent('li').remove();
+                          
+          });
+          
+          clone.find('input[type=text]').val('');
+     });
+     //End script for clone crMission section
+     
+     //Script for clone Key to success section
+     jQuery("#add_key").click(function(){
+          var k2sStartDate = jQuery(".mainStart").val();
+          var k2sEndDate = jQuery(".mainEnd").val();
+          //alert(k2sStartDate);
+          /**For datepicker cloning::Start**/
+          jQuery('.calInput').datepicker("destroy"); 
+          jQuery('.calInput').removeAttr("id");
+          /**For datepicker cloning::End**/
+          
+          var clone = jQuery("#keyClone table tr td li").last().clone();
+	  //alert(jQuery("#keyClone table tr td li").html()); 
+          jQuery(clone).appendTo(jQuery("#keyClone table tr td"));
+          
+          var img = jQuery("<a align ='right' style='float:right; margin-top:-30px; margin-left:320px; text-align:right; color:#D83F4A;' href='javascript:void(0);'><img src='<?php echo SITE_URL ?>img/remove.png'/></a>");
+          
+          jQuery("#keyClone table tr td li").last().append(img);
+          jQuery(img).click(function(){
+                  
+                  jQuery(img).parent('li').remove();
+                          
+          });
+          
+          clone.find('input[type=text]').val('');
+          
+          clone.find('.k2sStart').val(k2sStartDate);
+          clone.find('.k2sEnd').val(k2sEndDate);
+          
+          //Bind the cloned class with datepicker
+          jQuery( ".calInput" ).datepicker({dateFormat: 'dd/mm/yy'});
+     });
+     //End script for clone Key to success section
+     
+     jQuery('.k2sStart').each(function(){
+	  if(jQuery(this).val() == ''){
+	       jQuery(this).val(jQuery("#MissionStartTime").val());
+	  }
+	  //alert(jQuery(this).val());
+     });
+     jQuery('.k2sEnd').each(function(){
+	  if(jQuery(this).val() == ''){
+	       jQuery(this).val(jQuery("#MissionEndTime").val());
+	  }
+	  //alert(jQuery(this).val());
+     });
+   
+	$(".various").fancybox({
+		maxWidth	: 540,
+		maxHeight	: 350,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+     $('#ajax-btn').click(function() {
+        var sEmail = $('#email').val();
+	var sponsor_name = $('#sponsor_name').val();
+	if (sponsor_name == '') {
+	  $('.flash_error').css('display','block');
+	  return false;
+	}
+	if ($.trim(sEmail).length == 0) {
+	    $('.flash_error').css('display','block');
+            return false;
+        }
+//        if (validateEmail(sEmail)) {
+//	         return true;
+//        }else {
+//	     $('.flash_error').css('display','block');
+//	    return false;
+//        }
+	
+    });
+     $('.add_sponsor').live('click', function(){
+	  var username = $('#sponsor_name').val();
+	   var userEmail = $('#email').val();
+	   var id = <?php echo $_SESSION['Auth']['User']['id']; ?>;
+	  //alert(userEmail);
+	  $.ajax({
+		    url:'<?php echo SITE_URL;?>groups/ajax_add_sponsor/'+username+'/'+userEmail,
+		    success:function(data){
+			      //alert(data);
+			      jQuery("#invite_sponsor_element").html(data);
+			      $.fancybox.close();
+		    }    
+	  });
+     });
+      $('.sponsordel').live('click',function(){
+	  //alert('hii');
+	  $(this).parent().parent('li').remove();
+	  var id = $(this).attr('id');
+	  $.ajax({
+	       url:'<?php echo SITE_URL;?>missions/deleteSponsor/'+id,
+	       success: function(data){
+	       }
+	  })
+      });
+      
+      // change to activated on click
+      //if( $('input:radio[data[Mission][sponsor_id]]').is(':checked') === true) {
+	  //var id = $('input:radio').val();
+	  //$('.spn').html('Activated');	  
+     //} 
+     $('.sp_invite_radio:radio').live('click',function(){
+	  var id = $(this).val();
+	  $('.spn').html('Invited');
+	  $('.'+id+'').html('Activated');
+     });  
+});
+</script>
